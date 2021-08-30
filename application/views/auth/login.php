@@ -13,6 +13,7 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
+                                    <?= $this->session->flashdata('message'); ?>
                                 </div>
                                 <form class="user">
                                     <div class="form-group">
@@ -30,7 +31,7 @@
                                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
                                 </div>
                             </div>
                         </div>
