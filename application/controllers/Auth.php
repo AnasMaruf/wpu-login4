@@ -36,8 +36,8 @@ class Auth extends CI_Controller
             if ($user['is_active'] == 1) {
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'email' => $email,
-                        'password' => $password
+                        'email' => $user['email'],
+                        'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
                     if ($user['role_id'] == 1) {
@@ -103,5 +103,16 @@ class Auth extends CI_Controller
             </div>');
             redirect('auth');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+        You have been logged out!
+        </div>');
+        redirect('auth');
     }
 }
